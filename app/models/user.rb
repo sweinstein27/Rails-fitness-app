@@ -10,7 +10,11 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
     validates :email, email_format: { message: "isn't properly formatted." }
     validates :age, numericality: {greater_than_or_equal_to: 17}
-  
+
+def show
+  binding.pry
+
+end
     def weight_class
       if self.weight <= 130
         "cph_130"

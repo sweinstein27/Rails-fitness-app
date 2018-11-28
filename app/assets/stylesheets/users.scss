@@ -1,0 +1,64 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 { text-indent: 20px; }
+
+#wrapper {
+  width: 1080px;
+}
+
+#user-wrapper {
+  margin-bottom: 42px;
+}
+
+#profile-block {
+  display:inline-block;
+  border-radius: 8px;
+  padding: 19px;
+  margin: 2px;
+  background: #f8f8f8;
+  position: relative;
+  top: 52px;
+  left: 14px;
+}
+
+.user-chart {
+  display: inline-block;
+  padding-left: 100px;
+  position: relative;
+  bottom: 90px;
+}
+
+#history {
+  width: 35%;
+  display: inline-block;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px;
+}
+
+#top-wrapper {
+  height: 440px;
+}
+
+#challenges {
+  width: 35%;
+  display: inline-block;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 12px 12px 60px;
+}
+
+.avatar {
+  width: 120px;
+  position: relative;
+  top: 49px;
+  left: 20px;
+}
+
+#ava {
+  position: relative;
+  right: 85px;
+  top: 130px;
+}

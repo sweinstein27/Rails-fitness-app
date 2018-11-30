@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/auth/github/callback' => 'sessions#create'
+
   resources :challenges
   root 'welcome#index'
   get '/auth/:provider/callback', to: 'sessions#create'

@@ -11,8 +11,8 @@ class ActivityEntriesController < ApplicationController
     def create
       weight_class = current_user.weight_class
       binding.pry
-      @activity = ActivityDatum.find(params[:activity_entry][:id])
-      hours = @activity.mins_to_hours(params[:activity_entry][:minutes])
+      @activity = ActivityDatum.find_by(id: params[:activity_entry][:id])
+      hours = params[:activity_entry][:minutes].to_f/60
       cals_burned = (@activity.cals_burned(weight_class, hours)).to_i
   
       @entry = ActivityEntry.new(name: @activity.name, minutes: params[:activity_entry][:minutes])

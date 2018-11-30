@@ -1,2 +1,12 @@
 <h3 style="margin-left: 211px;">User Sign-up Analytics</h3>
-<div id="chartContainer"><%= @chart.render() %></div>
+<% @users.each do |user| %>
+    
+    <tr>
+    
+    <td>User Id:<%= user.id %></td><br>
+    <td>Name:<%= user.first_name %> <%= user.last_name %><td>
+    <br>
+    <br>
+    <tr>
+<% end %>
+

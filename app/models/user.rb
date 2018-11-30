@@ -2,8 +2,8 @@ class User < ApplicationRecord
     has_secure_password
   
     has_many :activity_entries
-    has_many :users_challenges
-    has_many :challenges, through: :users_challenges
+    
+    has_many :challenges
   
     validates :username, uniqueness: {message: "has already been taken!"}
     validates :username, :first_name, :last_name, :city, :password, :age, :weight, :email, presence: true

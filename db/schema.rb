@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 8) do
     t.string   "rules"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

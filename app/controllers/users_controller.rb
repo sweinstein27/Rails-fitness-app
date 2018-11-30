@@ -18,69 +18,6 @@ class UsersController < ApplicationController
   
     def show
       @user = find_user
-      @chart = Fusioncharts::Chart.new({
-        width: "600",
-        height: "400",
-        type: "column3d",
-        renderAt: "chartContainer",
-        dataSource: {
-          "chart": {
-              "caption": "Weekly Calories Burned (Last 7 Days)",
-              "xAxisName": "Days",
-              "yAxisName": "Calories Burned",
-              "paletteColors": "#0075c2",
-              "bgColor": "#ffffff",
-              "borderAlpha": "20",
-              "plotBorderAlpha": "10",
-              "placevaluesInside": "1",
-              "rotatevalues": "1",
-              "valueFontColor": "#ffffff",
-              "showXAxisLine": "1",
-              "xAxisLineColor": "#999999",
-              "divlineColor": "#999999",
-              "divLineDashed": "1",
-              "showAlternateHGridColor": "0",
-          },
-          "data": [
-              {
-                  "label": "7 Days Ago",
-                  "value": @user.find_calories_by_days_ago(7)
-              },
-              {
-                  "label": "6 Days Ago",
-                  "value": @user.find_calories_by_days_ago(6)
-              },
-              {
-                  "label": "5 Days Ago",
-                  "value": @user.find_calories_by_days_ago(5)
-              },
-              {
-                  "label": "4 Days Ago",
-                  "value": @user.find_calories_by_days_ago(4)
-              },
-              {
-                  "label": "3 Days Ago",
-                  "value": @user.find_calories_by_days_ago(3)
-              },
-              {
-                  "label": "2 Days Ago",
-                  "value": @user.find_calories_by_days_ago(2)
-              },
-              {
-                  "label": "Yesterday",
-                  "value": @user.find_calories_by_days_ago(1)
-              },
-              {
-                  "label": "Today",
-                  "value": @user.activity_entries.where("created_at >= ?", Time.zone.now.beginning_of_day).sum(:calories_burned)
-              }
-            ]
-          }
-        })
-      unless session[:user_id] == @user.id
-        flash[:error] = "Mind ya business!"
-        redirect_to user_path(session[:user_id])
-      end
     end
   
     def edit
@@ -99,6 +36,15 @@ class UsersController < ApplicationController
     def destroy
       find_user.destroy
       redirect_to root_path
+    end
+
+    def index
+      @users = User.all
+      if @user.admin
+        render :index 
+      else
+        redirect_to user_path(@user)
+      end
     end
   
     # Admin actions

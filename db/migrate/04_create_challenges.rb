@@ -5,6 +5,7 @@ class CreateChallenges < ActiveRecord::Migration
         t.string :rules
         t.datetime :start_date
         t.datetime :end_date
+        t.references :user
   
         t.timestamps
       end

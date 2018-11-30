@@ -2,15 +2,16 @@ class ChallengesController < ApplicationController
     before_action :require_login
   
     def index
-      @challenges = Challenge.all
+      @challenges = @user.challenges
     end
   
     def new
-      @challenge = Challenge.new
+      @challenge = @user.challenges.new
+
     end
   
     def create
-      @challenge = Challenge.new(challenge_params)
+      @challenge = @user.challenges.new(challenge_params)
       if @challenge.save
         redirect_to challenge_path(@challenge)
       else
@@ -20,6 +21,7 @@ class ChallengesController < ApplicationController
   
     def show
       @challenge = current_challenge
+      binding.pry
     end
   
     def edit
@@ -50,6 +52,6 @@ class ChallengesController < ApplicationController
     end
   
     def challenge_params
-      params.require(:challenge).permit(:name,:rules, :start_date, :end_date)
+      params.require(:challenge).permit(:name,:rules, :start_date, :end_date, :id)
     end
   end

@@ -16,15 +16,16 @@ class SessionsController < ApplicationController
     end
 
     def create
-      @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        u.name = auth['info']['name']
-        u.email = auth['info']['email']
-        u.image = auth['info']['image']
+      auth = request.env["omniauth.auth"]
+      if User.find_by(uid: auth[:uid])
+        @user = User.find_by(uid: auth[:uid])
+      else
+        @user = User.create_with_omniauth(auth)
       end
-   
+      binding.pry
+      reset_session
       session[:user_id] = @user.id
-   
-      redirect_to user_path
+      redirect_to users_path(@user), :notice => 'Signed in!'
     end
 
   
@@ -38,5 +39,6 @@ class SessionsController < ApplicationController
     def auth
       request.env['omniauth.auth']
     end
+
   
   end

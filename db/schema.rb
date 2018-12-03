@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,55 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 2018_12_03_155108) do
 
   create_table "activity_data", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "cph_130"
-    t.integer  "cph_155"
-    t.integer  "cph_180"
-    t.integer  "cph_205"
+    t.string "name"
+    t.integer "cph_130"
+    t.integer "cph_155"
+    t.integer "cph_180"
+    t.integer "cph_205"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "activity_entries", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "minutes"
-    t.integer  "calories_burned"
-    t.integer  "user_id"
+    t.string "name"
+    t.integer "minutes"
+    t.integer "calories_burned"
+    t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "challenges", force: :cascade do |t|
-    t.string   "name"
-    t.string   "rules"
+    t.string "name"
+    t.string "rules"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "user_id"
+    t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "city"
-    t.string   "password_digest"
-    t.integer  "age"
-    t.integer  "weight"
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "city"
+    t.string "password_digest"
+    t.integer "age"
+    t.integer "weight"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",           default: false
-    t.string   "email"
-    t.integer  "avatar"
+    t.boolean "admin", default: false
+    t.string "email"
+    t.integer "avatar"
+    t.integer "uid"
   end
 
   create_table "users_challenges", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "challenge_id"
+    t.integer "user_id"
+    t.integer "challenge_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

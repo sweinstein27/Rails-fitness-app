@@ -1,20 +1,31 @@
 class User < ApplicationRecord
-    has_secure_password
+    # has_secure_password
   
     has_many :activity_entries
-    
-    has_many :challenges
+    has_many :users_challenges
+    has_many :challenges, through: :users_challenges
   
-    validates :username, uniqueness: {message: "has already been taken!"}
-    validates :username, :first_name, :last_name, :city, :password, :age, :weight, :email, presence: true
-    validates :email, uniqueness: true
-    validates :email, email_format: { message: "isn't properly formatted." }
-    validates :age, numericality: {greater_than_or_equal_to: 17}
+    # # validates :username, uniqueness: {message: "has already been taken!"}
+    # validates :username, :first_name, :last_name, :city, :age, :weight, :email, presence: true
+    # validates :email, uniqueness: true
+    # validates :email, email_format: { message: "isn't properly formatted." }
+    # validates :age, numericality: {greater_than_or_equal_to: 17}
 
-def show
-  binding.pry
-
-end
+    def self.create_with_omniauth(auth)
+      binding.pry
+      create! do |user|
+        user.uid = auth['uid']
+        user.first_name = auth[:info][:name].split(" ").first
+        user.last_name = auth[:info][:name].split(" ").second
+        user.city = auth[:extra][:raw_info][:location]
+        user.age = 18
+        user.weight = 200
+        user.admin = false 
+        user.email = auth[:info][:email]
+        user.username = auth[:info][:nickname]
+      end
+    end
+    
     def weight_class
       if self.weight <= 130
         "cph_130"

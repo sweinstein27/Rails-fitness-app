@@ -2,16 +2,21 @@ class ChallengesController < ApplicationController
     before_action :require_login
   
     def index
-      @challenges = Challenge.all
+      binding.pry
+      @challenges = @user.challenges
     end
   
     def new
-      @challenge = Challenge.new
+      binding.pry
+      @challenge = @user.challenges.new
 
     end
   
     def create
-      @challenge = @user.challenges.new(challenge_params)
+      binding.pry
+      @challenge = @user.challenges.create(challenge_params)
+      @challenge.user_id = @user.id
+      @challenge.save
       if @challenge.save
         redirect_to challenge_path(@challenge)
       else

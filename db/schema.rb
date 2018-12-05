@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 2018_12_03_155108) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,8 +62,10 @@ ActiveRecord::Schema.define(version: 2018_12_03_155108) do
   create_table "users_challenges", force: :cascade do |t|
     t.integer "user_id"
     t.integer "challenge_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_users_challenges_on_challenge_id"
+    t.index ["user_id"], name: "index_users_challenges_on_user_id"
   end
 
 end

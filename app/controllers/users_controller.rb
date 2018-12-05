@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
     before_action :require_login, except: [:new, :create, :new_admin]
-    respond_to :js, only: :delete_activity
   
     def new
       @user = User.new
@@ -26,7 +25,11 @@ class UsersController < ApplicationController
     end
   
     def show
-      @user = find_user
+      if !!permission == true
+        @user = find_user
+      else
+        redirect_to user_path(@user)
+      end
     end
   
     def edit

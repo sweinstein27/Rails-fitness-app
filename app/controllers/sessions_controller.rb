@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user
     def new
       @user = User.new
     end
@@ -11,7 +10,6 @@ class SessionsController < ApplicationController
       else
         @user = User.create_with_omniauth(auth)
       end
-      binding.pry
       reset_session
       session[:user_id] = @user.id
       redirect_to users_path(@user), :notice => 'Signed in!'

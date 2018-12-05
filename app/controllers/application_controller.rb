@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  before_action :authenticate_user
 
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
@@ -17,6 +16,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless logged_in?
   end
 
+  def permission
+    current_user.id === params[:id].to_i
+  end
+
   private
 
   def authenticate_user
@@ -25,5 +28,7 @@ class ApplicationController < ActionController::Base
     github_url = "https://github.com/login/oauth/authorize?client_id=#{client_id}&scope=repo"
     redirect_to github_url unless logged_in?
   end
+
+
 
 end

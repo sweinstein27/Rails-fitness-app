@@ -12,7 +12,6 @@ class User < ApplicationRecord
     validates :age, numericality: {greater_than_or_equal_to: 17}
 
     def self.create_with_omniauth(auth)
-      binding.pry
       create! do |user|
         user.uid = auth['uid']
         user.first_name = auth[:info][:name].split(" ").first

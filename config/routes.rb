@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/auth/github/callback' => 'sessions#create'
+  get '/auth/github/callback' => 'sessions#create_with_omniauth'
 
   resources :challenges
   root 'welcome#index'

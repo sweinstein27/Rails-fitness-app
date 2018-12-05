@@ -3,19 +3,8 @@ class SessionsController < ApplicationController
     def new
       @user = User.new
     end
-  
-    def create
-      @user = User.find_by(username: params[:user][:username])
-      if @user && @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
-      else
-        flash[:error] = "Username or password is incorrect."
-        redirect_to login_path
-      end
-    end
 
-    def create
+    def create_with_omniauth
       auth = request.env["omniauth.auth"]
       if User.find_by(uid: auth[:uid])
         @user = User.find_by(uid: auth[:uid])
@@ -29,7 +18,22 @@ class SessionsController < ApplicationController
     end
 
   
+    def create
+      binding.pry
+      @user = User.find_by(username: params[:user][:username])
+      if @user && @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        flash[:error] = "Username or password is incorrect."
+        redirect_to login_path
+      end
+    end
+
+    
+  
     def destroy
+      binding.pry
       session[:user_id] = nil
       redirect_to root_path
     end

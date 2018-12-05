@@ -1,8 +1,6 @@
 class ActivityEntriesController < ApplicationController
     before_action :require_login
   
-    # this is a change
-  
     def new
       @activity_entry = ActivityEntry.new
       @data = ActivityDatum.all
@@ -30,17 +28,12 @@ class ActivityEntriesController < ApplicationController
       @activity_entry = current_entry
     end
   
-    def update
-      # Fix this
-    end
 
     def show
       @activity_entry = ActivityEntry.find_by_id(params[:id])
-      binding.pry
     end
   
     def destroy
-      binding.pry
       @current_entry = current_entry
       @current_entry.destroy
       flash[:success] = "Record successfully deleted!"

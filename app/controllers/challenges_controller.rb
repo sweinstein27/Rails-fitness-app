@@ -2,18 +2,15 @@ class ChallengesController < ApplicationController
     before_action :require_login
   
     def index
-      binding.pry
-      @challenges = Challenge.find_by()
+      @challenges = @user.challenges
     end
   
     def new
-      binding.pry
       @challenge = @user.challenges.new
 
     end
   
     def create
-      binding.pry
       @challenge = @user.challenges.create(challenge_params)
       @challenge.user_id = @user.id
       @challenge.save
@@ -29,7 +26,6 @@ class ChallengesController < ApplicationController
     end
   
     def edit
-      #this should only be a feature for the person who created this challenge
       @challenge = current_challenge
     end
   
@@ -43,7 +39,6 @@ class ChallengesController < ApplicationController
     end
   
     def destroy
-      #this should only be a feature for the person who created this challenge
       @challenge = current_challenge
       @challenge.destroy
       redirect_to challenges_path

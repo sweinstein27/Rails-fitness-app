@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :require_login, except: [:new, :create, :new_admin]
+    respond_to :js, only: :delete_activity
   
     def new
       @user = User.new
@@ -17,7 +18,11 @@ class UsersController < ApplicationController
     end
 
     def delete_activity
-      binding.pry
+      if @user.activity_entries.find_by(id: params[:id])
+        @activity_entry = @user.activity_entries.find_by(id: params[:id])
+        @activity_entry.delete
+      end
+      redirect_to user_path(@user)
     end
   
     def show

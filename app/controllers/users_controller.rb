@@ -15,6 +15,10 @@ class UsersController < ApplicationController
         render 'new'
       end
     end
+
+    def delete_activity
+      binding.pry
+    end
   
     def show
       @user = find_user

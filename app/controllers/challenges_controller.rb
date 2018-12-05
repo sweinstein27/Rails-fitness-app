@@ -3,7 +3,7 @@ class ChallengesController < ApplicationController
   
     def index
       binding.pry
-      @challenges = @user.challenges
+      @challenges = Challenge.find_by()
     end
   
     def new

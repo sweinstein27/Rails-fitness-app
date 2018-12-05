@@ -42,8 +42,7 @@
         <td style="text-align: left;"><%= act.name %></td>
         <td style="text-align: right;"><%= act.calories_burned %></td>
         <td style="text-align: right;"><%= act.created_at.strftime("%m/%d/%Y") %></td>
-        <td style="text-align: right;">
-          <%= link_to( ("<i class='fa fa-times' data-method='delete' style='color: #b51111' aria-hidden='true'></i>").html_safe, activity_entry_url(act), method: :delete ) %>
+        <td style="text-align: right;"><%= link_to 'Delete', '/users/activity_entries/#{act.id}/destroy' %></td>
         </td>
       </tr>
       <% end %>

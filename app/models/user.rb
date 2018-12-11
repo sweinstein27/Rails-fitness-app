@@ -1,7 +1,9 @@
 class User < ApplicationRecord
     has_secure_password
-  
-    has_many :activity_entries
+
+    has_many :users_activity_entries
+    has_many :activity_entries, through: :users_activity_entries
+    
     has_many :users_challenges
     has_many :challenges, through: :users_challenges
   

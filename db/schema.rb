@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_155108) do
+ActiveRecord::Schema.define(version: 2018_12_11_140919) do
 
   create_table "activity_data", force: :cascade do |t|
     t.string "name"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 2018_12_03_155108) do
     t.string "email"
     t.integer "avatar"
     t.integer "uid"
+  end
+
+  create_table "users_activity_entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "activity_entry_id"
+    t.integer "minutes"
+    t.index ["activity_entry_id"], name: "index_users_activity_entries_on_activity_entry_id"
+    t.index ["user_id"], name: "index_users_activity_entries_on_user_id"
   end
 
   create_table "users_challenges", force: :cascade do |t|

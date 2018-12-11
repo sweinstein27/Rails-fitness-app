@@ -1,14 +1,6 @@
 <h1>Log in!</h1>
 
 <%= form_for(@user, url: sessions_path) do |f| %>
-  <% if f.object.errors.any? %>
-  <ul>
-    <% if f.object.errors.each do |message| %>
-    <li><b><%= message  %> is required</b></li>
-    <% end %>
-  </ul>
-  <% end %>
-<% end %> 
 
   <%= f.label :username %><br>
   <%= f.text_field :username %><br>

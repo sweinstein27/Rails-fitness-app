@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :users_activity_entries, only: [:new, :create]
 
   get 'users/:id/activity_entries/:id/destroy' => 'users#delete_activity'
 

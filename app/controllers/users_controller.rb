@@ -28,8 +28,6 @@ class UsersController < ApplicationController
       binding.pry
       if !!permission == true
         @user = find_user
-        @entries = @user.users_activity_entries
-        
       else
         redirect_to user_path(@user)
       end

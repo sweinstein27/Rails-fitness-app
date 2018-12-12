@@ -5,6 +5,7 @@ class CreateActivityEntries < ActiveRecord::Migration[5.2]
         t.integer :minutes
         t.integer :calories_burned
         t.references :user, foreign_key: true
+        t.references :activity_datum, foreign_key: true
   
         t.timestamps
       end

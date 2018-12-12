@@ -1,5 +1,8 @@
 class ActivityDatum < ApplicationRecord
-    validates :name, uniqueness: true
+  has_many :activity_entries
+  has_many :users, through: :activity_entries
+    
+  validates :name, uniqueness: true
   
     def mins_to_hours(mins)
       mins.to_f/60

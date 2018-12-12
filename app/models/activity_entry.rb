@@ -1,6 +1,6 @@
 class ActivityEntry < ApplicationRecord
-    has_many :users_activity_entries
-    has_many :users, through: :users_activity_entries
+      belongs_to :user
+      belongs_to :activity_datum
     
   
     def all

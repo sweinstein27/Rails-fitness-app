@@ -12,7 +12,7 @@ class ActivityEntriesController < ApplicationController
       hours = params[:activity_entry][:minutes].to_f/60
       cals_burned = (@activity.cals_burned(weight_class, hours)).to_i
   
-      @entry = ActivityEntry.new(name: @activity.name, minutes: params[:activity_entry][:minutes])
+      @entry = ActivityEntryUsers.new(name: @activity.name, minutes: params[:activity_entry][:minutes])
       @entry.calories_burned = cals_burned
       @entry.user_id = current_user.id
   

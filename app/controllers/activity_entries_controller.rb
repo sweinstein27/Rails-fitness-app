@@ -11,10 +11,8 @@ class ActivityEntriesController < ApplicationController
       @activity = ActivityDatum.find_by(id: params[:activity_entry][:id])
       hours = params[:activity_entry][:minutes].to_f/60
       cals_burned = (@activity.cals_burned(weight_class, hours)).to_i
-  
-      @entry = ActivityEntry.new(name: @activity.name, minutes: params[:activity_entry][:minutes])
+      @entry = ActivityEntry.new(name: @activity.name, minutes: params[:activity_entry][:minutes], activity_datum_id: params[:activity_entry][:id], user_id: @user.id)
       @entry.calories_burned = cals_burned
-      @entry.user_id = current_user.id
   
       if @entry.save
         redirect_to user_path(current_user)

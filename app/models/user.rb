@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
     def self.create_with_omniauth(auth)
       create! do |user|
-        user.uid = auth['uid']
+        user.uid = auth[:uid]
         user.first_name = auth[:info][:name].split(" ").first
         user.last_name = auth[:info][:name].split(" ").second
         user.city = auth[:extra][:raw_info][:location]

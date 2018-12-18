@@ -1,0 +1,5 @@
+<h1> <%= @activity_data.name %> </h1>
+
+<% @activity_data.users.each do |user| %>
+    <%= user.username %>
+<% end %>

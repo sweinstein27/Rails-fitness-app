@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/activity_datum/:id' => 'activity_datum#show'
+
 
   get 'users/:id/activity_entries/:id/destroy' => 'users#delete_activity'
 

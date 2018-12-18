@@ -5,9 +5,8 @@ class SessionsController < ApplicationController
 
     def create_with_omniauth
       auth = request.env["omniauth.auth"]
-      if User.find_by(uid: auth[:uid])
-        @user = User.find_by(uid: auth[:uid])
-      else
+      @user = User.find_by(username: auth[:info][:nickname])
+      if @user.nil?
         @user = User.create_with_omniauth(auth)
       end
       reset_session

@@ -39,7 +39,7 @@
       <tbody>
       <% @user.activity_entries.reverse.each do |act| %>
       <tr>
-        <td style="text-align: left;"><%= act.name %></td>
+        <td style="text-align: left;"><%= link_to "#{act.name}", "/activity_datum/#{act.activity_datum_id}" %></td>
         <td style="text-align: right;"><%= act.calories_burned %></td>
         <td style="text-align: right;"><%= act.created_at.strftime("%m/%d/%Y") %></td>
         <td style="text-align: right;"><%= link_to 'Delete', "/users/#{@user.id}/activity_entries/#{act.id}/destroy" %></td>

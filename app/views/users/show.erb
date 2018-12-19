@@ -1,3 +1,11 @@
+<script>
+$(document).ready(function(){
+  $("#new-activity").click(function(event){
+    event.preventDefault();
+  });
+});
+</script>
+
 <div id="top-wrapper">
   <div class="avatar-container">
     <% if @user.avatar == nil  %>
@@ -14,7 +22,9 @@
     Age: <%= @user.age %><br>
     Weight: <%= @user.weight %><br>
     <br>
-    <%= link_to 'Add an activity',  new_entry_path %><br>
+    <div id="new-activity">
+      <%= link_to 'Add an activity',  new_entry_path %><br>
+    </div>
     <%= link_to 'Enter a challenge', new_user_challenge_path(@user) %><br>
     <%= link_to 'Edit profile', edit_user_path(@user) %><br>
     <% if @user.admin %>

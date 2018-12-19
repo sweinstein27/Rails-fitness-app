@@ -15,28 +15,6 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require dataTables/jquery.dataTables
-
-//= require fusioncharts/fusioncharts
-//= require fusioncharts/fusioncharts.charts
-//= require fusioncharts/themes/fusioncharts.theme.fint
 
 //= require_tree .
 
-$(document).ready(function() {
-    $('#user-history, #challenge-people, #activity-analytics, #all-users').DataTable();
-    $('#ava').on('click', function() {
-      var arr = window.location.href.split("/");
-      var params = {
-        user_id : arr[arr.length - 1],
-        avatar_id : $('.avatar').attr('data')
-      };
-      post_it(params);
-    });
-  });
-  
-  var post_it = function(params) {
-    $.post('/avatar', params, function(){
-      $('#ava').hide(400);
-    });
-  }

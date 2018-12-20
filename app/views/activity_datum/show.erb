@@ -1,5 +1,9 @@
+<%= javascript_include_tag "show_activities" %>
+
 <h1> <%= @activity_data.name %> </h1>
 
 <% @activity_data.users.each do |user| %>
-    <%= user.username %>
+    <p class="userName"><%= user.username %></p>
 <% end %>
+
+<button id="next">Next Activity</button>

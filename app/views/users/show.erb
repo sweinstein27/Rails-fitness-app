@@ -1,10 +1,4 @@
-<script>
-$(document).ready(function(){
-  $("#new-activity").click(function(event){
-    event.preventDefault();
-  });
-});
-</script>
+<%= javascript_include_tag "new_activity" %>
 
 <div id="top-wrapper">
   <div class="avatar-container">
@@ -22,9 +16,8 @@ $(document).ready(function(){
     Age: <%= @user.age %><br>
     Weight: <%= @user.weight %><br>
     <br>
-    <div id="new-activity">
-      <%= link_to 'Add an activity',  new_entry_path %><br>
-    </div>
+
+    <%= link_to 'Add an activity',  new_entry_path, :id => "new_activity" %><br>
     <%= link_to 'Enter a challenge', new_user_challenge_path(@user) %><br>
     <%= link_to 'Edit profile', edit_user_path(@user) %><br>
     <% if @user.admin %>

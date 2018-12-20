@@ -16,5 +16,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require newActivity
+//= require new_activity
 

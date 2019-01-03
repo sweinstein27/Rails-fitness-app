@@ -2,12 +2,11 @@ class ActivityDatumController < ApplicationController
 
     def show
        @activity_data = ActivityDatum.find_by(id: params[:id])
-       respond_to do |format|
-        format.html { render :show }
-        format.json do
-          render json: @activity_data
-        end
-      end
+    end
+
+    def data
+        @activity_data = ActivityDatum.find_by(id: params[:id])
+        render json: @activity_data, status: 201
     end
 
 end

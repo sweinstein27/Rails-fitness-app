@@ -1,9 +1,9 @@
 
 
-<h1 class="dataName"> <%= @activity_data.name %> </h1>
+<h1 id="dataName"> <%= @activity_data.name %> </h1>
 
 <% @activity_data.users.each do |user| %>
-    <p class="userName"><%= user.username %></p>
+    <p id="userName"><%= user.username %></p>
 <% end %>
 
 <button id="next" data-id="<%=@activity_data.id%>">Next Activity</button>

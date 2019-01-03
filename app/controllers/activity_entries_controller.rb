@@ -14,7 +14,7 @@ class ActivityEntriesController < ApplicationController
       @entry = ActivityEntry.new(name: @activity.name, minutes: params[:activity_entry][:minutes], activity_datum_id: params[:activity_entry][:id], user_id: @user.id)
       @entry.calories_burned = cals_burned
       if @entry.save
-        redirect_to user_path(current_user)
+        render json: @entry, status: 201
       else
         redirect_to new_entry_path
       end

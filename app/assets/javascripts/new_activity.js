@@ -23,6 +23,14 @@ $(document).ready(function(){
         var values = $(this).serialize();
         
         var posting = $.post(this.action, values);
+
+        posting.done(function(data) {
+            var entry = data;
+            console.log(data)
+            $("#name").text(entry["name"]);
+            $("#calories").text(entry["calories_burned"]);
+            $("#created_at").text(entry["created_at"]);
+        });
     });
   });
 

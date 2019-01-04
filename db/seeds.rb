@@ -271,11 +271,14 @@ User.create(username: "Kenny", first_name: "Kenny", last_name: "", city: "Nashvi
 
 puts "User 9 created"
 
-ActivityEntry.create(name: "Soccer, playing", minutes: 180, calories_burned: (493 * 3), user_id: 9, created_at: (DateTime.now))
-ActivityEntry.create(name: "Soccer, playing", minutes: 120, calories_burned: (493 * 2), user_id: 9, created_at: (DateTime.now - 1))
-ActivityEntry.create(name: "Soccer, playing", minutes: 45, calories_burned: (493 * 0.75), user_id: 9, created_at: (DateTime.now - 2))
-ActivityEntry.create(name: "Soccer, playing", minutes: 60, calories_burned: (493), user_id: 9, created_at: (DateTime.now - 3))
-ActivityEntry.create(name: "Soccer, playing", minutes: 120, calories_burned: (493 * 2), user_id: 9, created_at: (DateTime.now - 4))
+binding.pry
+
+
+# ActivityEntry.create(name: "Soccer, playing", minutes: 180, calories_burned: (493 * 3), user_id: 9, created_at: (DateTime.now))
+# ActivityEntry.create(name: "Soccer, playing", minutes: 120, calories_burned: (493 * 2), user_id: 9, created_at: (DateTime.now - 1))
+# ActivityEntry.create(name: "Soccer, playing", minutes: 45, calories_burned: (493 * 0.75), user_id: 9, created_at: (DateTime.now - 2))
+# ActivityEntry.create(name: "Soccer, playing", minutes: 60, calories_burned: (493), user_id: 9, created_at: (DateTime.now - 3))
+# ActivityEntry.create(name: "Soccer, playing", minutes: 120, calories_burned: (493 * 2), user_id: 9, created_at: (DateTime.now - 4))
 
 puts "User 9 Activity created"
 

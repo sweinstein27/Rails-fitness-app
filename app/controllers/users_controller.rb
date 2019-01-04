@@ -26,10 +26,16 @@ class UsersController < ApplicationController
   
     def show
       if !!permission == true
-        @user = find_user
+				@user = find_user
+				
+				respond_to do |f|
+					f.html {render :show}
+					f.json {render json: @user}
+				end
       else
         redirect_to user_path(@user)
-      end
+			end
+
     end
   
     def edit
@@ -56,7 +62,13 @@ class UsersController < ApplicationController
         render :index 
       else
         redirect_to user_path(@user)
-      end
+			end
+			
+			respond_to do |f|
+				f.html {render :index }
+				f.json {render json:  @users }
+			end
+
     end
   
     # Admin actions

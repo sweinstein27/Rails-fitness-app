@@ -11,10 +11,9 @@
 // about supported directives.
 //
 
-//= require turbolinks
-
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require new_activity
 //= require show_activities
+
+//= require_tree .

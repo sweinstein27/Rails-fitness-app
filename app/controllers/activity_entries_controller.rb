@@ -18,7 +18,6 @@ class ActivityEntriesController < ApplicationController
       else
         redirect_to new_entry_path
       end
-  
     end
   
     def edit

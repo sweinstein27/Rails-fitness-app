@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_155108) do
     t.integer "cph_155"
     t.integer "cph_180"
     t.integer "cph_205"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "activity_entries", force: :cascade do |t|
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_155108) do
     t.string "password_digest"
     t.integer "age"
     t.integer "weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "email"
     t.integer "avatar"

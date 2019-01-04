@@ -17,7 +17,7 @@
     Weight: <%= @user.weight %><br>
     <br>
 
-    <%= link_to 'Add an activity',  new_entry_path, :id => "new_activity" %><br>
+    <%= link_to 'Add an activity',  new_entry_path, class: "new_activity", id: @user.id %><br>
     <%= link_to 'Enter a challenge', new_user_challenge_path(@user) %><br>
     <%= link_to 'Edit profile', edit_user_path(@user) %><br>
     <% if @user.admin %>

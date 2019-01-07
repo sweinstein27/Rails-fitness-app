@@ -59,14 +59,12 @@ class UsersController < ApplicationController
     def index
       @users = User.all
       if @user.admin
-        render :index 
+        respond_to do |f|
+          f.html {render :index }
+          f.json {render json:  @users }
+        end
       else
         redirect_to user_path(@user)
-			end
-			
-			respond_to do |f|
-				f.html {render :index }
-				f.json {render json:  @users }
 			end
 
     end

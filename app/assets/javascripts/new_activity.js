@@ -23,30 +23,27 @@ $(document).ready(function () {
 		var values = $(this).serialize();
 
 		var posting = $.post(this.action, values);
-
 		posting.done(function (data) {
-
 			loadUserActivityEntries(user_id)
 
-			var entry = data;
-			console.log(data)
-			$("#name").text(entry["name"]);
-			$("#calories").text(entry["calories_burned"]);
-			$("#created_at").text(entry["created_at"]);
+			
 		});
 	});
 });
 
 function loadUserActivityEntries(user_id) {
-
 	$.ajax({
 		url: `http://localhost:3000/users/${user_id}.json`,
 		// dataType: 'json',
 		method: 'get'
 	}).done(function (data) {
+		data.activity_entries.forEach(function(entry) {
+			$("#name").text(entry.name);
+			$("#calories").text(entry.calories);
+			$("#created_at").text(entry.created_at);
 
+		})
 
-		debugger;
 
 	})
 

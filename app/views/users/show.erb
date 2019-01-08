@@ -44,7 +44,7 @@
       </thead>
       <tbody>
       <% @user.activity_entries.reverse.each do |act| %>
-      <tr id="activity-table">
+      <tr class="activity-table">
         <td id="name" style="text-align: left;"><%= link_to "#{act.name}", "/activity_datum/#{act.activity_datum_id}" %></td>
         <td id="calories" style="text-align: right;"><%= act.calories_burned %></td>
         <td id="created_at" style="text-align: right;"><%= act.created_at.strftime("%m/%d/%Y") %></td>

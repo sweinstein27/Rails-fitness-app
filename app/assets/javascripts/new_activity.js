@@ -32,15 +32,17 @@ $(document).ready(function () {
 });
 
 function loadUserActivityEntries(user_id) {
+	var counter = 0
 	$.ajax({
 		url: `http://localhost:3000/users/${user_id}.json`,
 		// dataType: 'json',
 		method: 'get'
 	}).done(function (data) {
 		data.activity_entries.forEach(function(entry) {
-			$("#name").text(entry.name);
-			$("#calories").text(entry.calories);
-			$("#created_at").text(entry.created_at);
+			debugger
+			// $(".name").text(entry.name);
+			// $(".calories").text(entry.calories_burned);
+			// $(".created_at").text(entry.created_at);
 
 		})
 

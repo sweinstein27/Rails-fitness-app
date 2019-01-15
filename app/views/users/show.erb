@@ -42,14 +42,13 @@
         <th style="text-align: right;">Workout Date</th>
         <th style="text-align: right;">Delete?</th>
       </thead>
-      <tbody>
+      <tbody id="table-body">
       <% @user.activity_entries.reverse.each do |act| %>
-      <tr class="activity-table">
-        <td id="name" style="text-align: left;"><%= link_to "#{act.name}", "/activity_datum/#{act.activity_datum_id}" %></td>
-        <td id="calories" style="text-align: right;"><%= act.calories_burned %></td>
-        <td id="created_at" style="text-align: right;"><%= act.created_at.strftime("%m/%d/%Y") %></td>
+      <tr id="activity-table">
+        <td class="name" style="text-align: left;"><%= link_to "#{act.name}", "/activity_datum/#{act.activity_datum_id}" %></td>
+        <td class="calories" style="text-align: right;"><%= act.calories_burned %></td>
+        <td class="created_at" style="text-align: right;"><%= act.created_at.strftime("%m/%d/%Y") %></td>
         <td style="text-align: right;"><%= link_to 'Delete', "/users/#{@user.id}/activity_entries/#{act.id}/destroy" %></td>
-        </td>
       </tr>
       <% end %>
       </tbody>

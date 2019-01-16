@@ -15,7 +15,7 @@ class ChallengesController < ApplicationController
       @challenge.user_id = @user.id
       @challenge.save
       if @challenge.save
-        redirect_to challenge_path(@challenge)
+        render json: @challenge, status: 201
       else
         render :new
       end

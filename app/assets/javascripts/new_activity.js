@@ -16,9 +16,8 @@ $(document).ready(function () {
 		})
 	});
 
-	$('form').submit(function (e) {
+	$('form#new_activity_entry').submit(function (e) {
 		e.preventDefault();
-		// alert("stopped");
 		let user_id = this.elements.activity_entry_user_id.value
 		var values = $(this).serialize();
 

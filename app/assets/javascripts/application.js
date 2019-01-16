@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require new_activity
 //= require show_activities
+//= require new_challenge
 
 //= require_tree .

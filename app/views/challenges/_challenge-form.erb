@@ -15,5 +15,6 @@
     <%= f.datetime_field :start_date %><br>
     <%= f.label "Challenge end date and time" %><br>
     <%= f.datetime_field :end_date%><br><br>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit %>
     <% end  %>

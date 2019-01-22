@@ -31,7 +31,6 @@ $(document).ready(function () {
 });
 
 function loadUserActivityEntries(user_id) {
-	var counter = 0
 	$.ajax({
 		url: `http://localhost:3000/users/${user_id}.json`,
 		// dataType: 'json',
@@ -40,12 +39,8 @@ function loadUserActivityEntries(user_id) {
 		$("#table-body").empty()
 		data.activity_entries.forEach(function(entry) {
 			let newActivity = new Activity(entry)
+			newActivity.formatTime()
 			$("#table-body").append(newActivity.formatIndex()) 
-			// createName(entry)
-			// createCalories(entry)
-			// $(".name").text(entry.name);
-			// $(".calories").text(entry.calories_burned);
-			// $(".created_at").text(entry.created_at);
 
 		})
 
@@ -78,23 +73,9 @@ function loadUserActivityEntries(user_id) {
 	`)
 }
 
-
-// function createName(entry) {
-// 	debugger
-// 	var newDiv = document.createElement('div')
-// 	var newName = entry.name
-// 	$(newDiv).append(newName)
-
-// 	var currentDiv = document.getElementsByClassName("name");
-// 	document.body.insertBefore(newDiv, currentDiv);
-// }
-
-// function createCalories(entry){
-// 	debugger
-// 	var newDiv = document.createElement('div')
-// 	var newCal = entry.calories_burned
-// 	$(newDiv).append(newCal)
-
-// 	var currentDiv = document.getElementsByClassName("calories");
-// 	document.body.insertBefore(newDiv, currentDiv);
-// }
+Activity.prototype.formatTime = function() {
+	date = this.created_at
+	year = this.date.split("-")[0]
+	month = this.date.split("-")[1]
+	day = something
+}

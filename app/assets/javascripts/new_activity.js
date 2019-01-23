@@ -39,7 +39,7 @@ function loadUserActivityEntries(user_id) {
 		$("#table-body").empty()
 		data.activity_entries.forEach(function(entry) {
 			let newActivity = new Activity(entry)
-			newActivity.formatTime()
+			// newActivity.formatTime()
 			$("#table-body").append(newActivity.formatIndex()) 
 
 		})

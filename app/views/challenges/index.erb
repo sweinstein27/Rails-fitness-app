@@ -15,16 +15,16 @@
   <tbody id="challenge-body">
     <% @challenges.started(Date.today).reverse.each do |challenge| %>
       <tr id="challenge-row">
-        <td id="challenge-name" style="text-align: left;"><%= link_to challenge.name, challenge_path(challenge) %></td>
+        <td id="challenge-name" style="text-align: left;"><%= link_to challenge.name, "/users/#{challenge.user_id}/challenges/#{challenge.id}" %></td>
         <td id="challenge-start" style="text-align: right;"><%= challenge.start_date.strftime("%m/%d/%Y") %></td>
         <td id="challenge-end" style="text-align: right;"><%= challenge.end_date.strftime("%m/%d/%Y") %></td>
-      </tr>
+        </tr>
       <br>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to "Create new challenge",  new_user_challenge_path, id: 'new_challenge' %>
+<%= link_to "Create new challenge",  new_challenge_path, id: 'new_challenge' %>
 <div id="new-challenge-form">
 </div>
 <%= link_to "See your profile", user_path(@user), class: 'btn btn-success new_c_btn' %>

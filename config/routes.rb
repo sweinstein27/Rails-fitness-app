@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   get 'users/:id/activity_entries/:id/destroy' => 'users#delete_activity'
 
+  get '/users/:id/challenges/:id/destroy' => 'challenges#destroy'
+
   get '/auth/github/callback' => 'sessions#create_with_omniauth'
 
-  resources :challenges
   root 'welcome#index'
   get '/login', to: 'sessions#new', as: 'login'
   post '/sessions', to: 'sessions#create'
@@ -25,8 +26,8 @@ Rails.application.routes.draw do
   get 'signup/admin', to: 'users#new_admin', as: 'admin_signup'
   post 'signup/admin', to: 'users#create'
 
-  resources :users_challenges, only: [:new, :create]
-
+  resources :users_challenges, only: [:new, :create, :destroy]
+  resources :challenges
   # error pages
   %w( 404 422 500 503 ).each do |code|
     get code, :to => "errors#show", :code => code

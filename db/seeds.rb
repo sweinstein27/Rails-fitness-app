@@ -19,7 +19,7 @@ puts "Now for the other stuff >>>"
 
 #<-------User 1 Seed--------->
 
-User.create(username: "JS", first_name: "Jason", last_name: "Sears", city: "Philly", password: "abc", password_confirmation: "abc", email: "jsears4585@gmail.com", weight: 170, age: 29, admin: true)
+User.create(username: "Test", first_name: "Jason", last_name: "Sears", city: "Philly", password: "password", password_confirmation: "password", email: "jsears4585@gmail.com", weight: 170, age: 29, admin: true)
 
 puts "User created"
 
@@ -271,7 +271,6 @@ User.create(username: "Kenny", first_name: "Kenny", last_name: "", city: "Nashvi
 
 puts "User 9 created"
 
-binding.pry
 
 
 # ActivityEntry.create(name: "Soccer, playing", minutes: 180, calories_burned: (493 * 3), user_id: 9, created_at: (DateTime.now))

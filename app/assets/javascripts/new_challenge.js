@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$("a#new_challenge").click(function (e) {
-        url = this.href
+		url = this.href
         e.preventDefault();
         
 		$.ajax({
@@ -38,6 +38,7 @@ function loadChallenges(user_id) {
 		$('#challenge-body').empty()
 		data.forEach(function(challenge) {
 			let newChallenge = new Challenge(challenge)
+			newChallenge.formatTime()
 			$("#challenge-body").append(newChallenge.formatIndex()) 
     	});
 
@@ -66,4 +67,18 @@ class Challenge {
   	</tr>
 	`)
 	
+}
+
+Challenge.prototype.formatTime = function() {
+	s_date = this.start_date
+	year = s_date.split("-")[0]
+	month = s_date.split("-")[1]
+	day = s_date.split("-")[2].split("T")[0]
+	this.start_date = month + "/" + day + "/" + year
+
+	e_date = this.end_date
+	year = e_date.split("-")[0]
+	month = e_date.split("-")[1]
+	day = e_date.split("-")[2].split("T")[0]
+	this.end_date = month + "/" + day + "/" + year
 }

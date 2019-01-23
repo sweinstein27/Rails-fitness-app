@@ -39,7 +39,7 @@ function loadUserActivityEntries(user_id) {
 		$("#table-body").empty()
 		data.activity_entries.forEach(function(entry) {
 			let newActivity = new Activity(entry)
-			// newActivity.formatTime()
+			newActivity.formatTime()
 			$("#table-body").append(newActivity.formatIndex()) 
 
 		})
@@ -74,8 +74,9 @@ function loadUserActivityEntries(user_id) {
 }
 
 Activity.prototype.formatTime = function() {
-	date = this.created_at
-	year = this.date.split("-")[0]
-	month = this.date.split("-")[1]
-	day = something
+	start_date = this.created_at
+	year = start_date.split("-")[0]
+	month = start_date.split("-")[1]
+	day = start_date.split("-")[2].split("T")[0]
+	this.created_at = month + "/" + day + "/" + year
 }

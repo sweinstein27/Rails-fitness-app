@@ -26,7 +26,7 @@ class ChallengesController < ApplicationController
     end
   
     def show
-      @challenge = current_challenge
+      @challenge = Challenge.find_by(id: params[:id])
     end
   
     def edit
@@ -43,16 +43,14 @@ class ChallengesController < ApplicationController
     end
   
     def destroy
-      @challenge = current_challenge
+      binding.pry
+      @challenge = @user.challenges.find_by(id: params[:id])
       @challenge.destroy
-      redirect_to challenges_path
+      redirect_to user_challenges_path(@user)
     end
   
   private
   
-    def current_challenge
-      Challenge.find(params[:id])
-    end
   
     def challenge_params
       params.require(:challenge).permit(:name,:rules, :start_date, :end_date, :id)

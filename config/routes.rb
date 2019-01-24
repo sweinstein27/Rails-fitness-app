@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'users/:id/activity_entries/:id/destroy' => 'users#delete_activity'
 
-  get '/users/:id/challenges/:id/destroy' => 'challenges#destroy'
+  get '/users/:id/challenge/:id/destroy' => 'challenges#destroy'
 
   get '/auth/github/callback' => 'sessions#create_with_omniauth'
 

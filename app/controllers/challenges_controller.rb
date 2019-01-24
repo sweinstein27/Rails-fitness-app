@@ -43,7 +43,6 @@ class ChallengesController < ApplicationController
     end
   
     def destroy
-      binding.pry
       @challenge = @user.challenges.find_by(id: params[:id])
       @challenge.destroy
       redirect_to user_challenges_path(@user)

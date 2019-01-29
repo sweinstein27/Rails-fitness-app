@@ -18,13 +18,15 @@
         <td id="challenge-name" style="text-align: left;"><%= link_to challenge.name, "/users/#{challenge.user_id}/challenges/#{challenge.id}" %></td>
         <td id="challenge-start" style="text-align: right;"><%= challenge.start_date.strftime("%m/%d/%Y") %></td>
         <td id="challenge-end" style="text-align: right;"><%= challenge.end_date.strftime("%m/%d/%Y") %></td>
-        <td style="text-align: right;"><%= link_to 'Delete', "/users/#{@user.id}/challenge/#{challenge.id}/destroy" %></td>
+        <td style="text-align: right;"><%= link_to 'Delete', "/users/#{challenge.user_id}/challenge/#{challenge.id}/destroy" %></td>
         </tr>
       <br>
   <% end %>
   </tbody>
 </table>
 
+<%= link_to "sort", user_challenges_path(@user), id: "sort" %>
+<br>
 <%= link_to "Create new challenge",  new_challenge_path, id: 'new_challenge' %>
 <div id="new-challenge-form">
 </div>

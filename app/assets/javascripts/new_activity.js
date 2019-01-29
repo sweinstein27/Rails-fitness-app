@@ -32,8 +32,8 @@ $(document).ready(function () {
 
 function loadUserActivityEntries(user_id) {
 	$.ajax({
-		url: `http://localhost:3000/users/${user_id}.json`,
-		// dataType: 'json',
+		url: `http://localhost:3000/users/${user_id}`,
+		dataType: 'json',
 		method: 'get'
 	}).done(function (data) {
 		$("#table-body").empty()
@@ -60,18 +60,29 @@ function loadUserActivityEntries(user_id) {
 	  this.created_at = obj.created_at
   
 	}
+
+	formatIndex() {
+		return (`
+		<tr id="activity-table">
+			<td class="name" style="text-align: left;"><a href='/activity_datum/${this.activity_datum_id}'>${this.name}</a></td>
+			<td class="calories" style="text-align: right;"> ${this.calories_burned} </td>
+			<td class="created_at" style="text-align: right;"> ${this.created_at}</td>
+			<td style="text-align: right;"><a href='/users/${this.user_id}/activity_entries/${this.id}/destroy'>Delete</td>
+		</tr>
+		`)
+	}
   }
 
-  Activity.prototype.formatIndex = function() {
-	return (`
-	<tr id="activity-table">
-		<td class="name" style="text-align: left;"><a href='/activity_datum/${this.activity_datum_id}'>${this.name}</a></td>
-		<td class="calories" style="text-align: right;"> ${this.calories_burned} </td>
-		<td class="created_at" style="text-align: right;"> ${this.created_at}</td>
-		<td style="text-align: right;"><a href='/users/${this.user_id}/activity_entries/${this.id}/destroy'>Delete</td>
-	</tr>
-	`)
-}
+//   Activity.prototype.formatIndex = function() {
+// 	return (`
+// 	<tr id="activity-table">
+// 		<td class="name" style="text-align: left;"><a href='/activity_datum/${this.activity_datum_id}'>${this.name}</a></td>
+// 		<td class="calories" style="text-align: right;"> ${this.calories_burned} </td>
+// 		<td class="created_at" style="text-align: right;"> ${this.created_at}</td>
+// 		<td style="text-align: right;"><a href='/users/${this.user_id}/activity_entries/${this.id}/destroy'>Delete</td>
+// 	</tr>
+// 	`)
+// }
 
 Activity.prototype.formatTime = function() {
 	start_date = this.created_at
